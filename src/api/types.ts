@@ -1,3 +1,13 @@
+export interface AllPokemon {
+  count: number;
+  next: string;
+  previous: string;
+  results: {
+    name: string;
+    url: string;
+  }[];
+}
+
 export interface Pokemon {
   abilities: Ability[];
   base_experience: number;
@@ -5,7 +15,10 @@ export interface Pokemon {
     latest: string;
     legacy: string;
   };
-  forms: Form[];
+  forms: {
+    name: string;
+    url: string;
+  }[];
   game_indices: GameIndex[];
   height: number;
   held_items: [];
@@ -13,7 +26,7 @@ export interface Pokemon {
   is_default: boolean;
   location_area_encounters: string;
   moves: Move[];
-  name: 'bulbasaur';
+  name: string;
   order: 1;
   past_abilities: [];
   past_types: [];
@@ -34,11 +47,6 @@ interface Ability {
   };
   is_hidden: boolean;
   slot: number;
-}
-
-interface Form {
-  name: string;
-  url: string;
 }
 
 interface GameIndex {

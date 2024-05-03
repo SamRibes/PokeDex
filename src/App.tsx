@@ -1,15 +1,27 @@
 import React from 'react';
-import { useGetPokemonByNameOrId } from './api/api';
+import { useGetAllPokemonByNameOrId, useGetPokemonByNameOrId } from './api/api';
 
 const App = () => {
-  const pokemonString = '1';
-  const { data, isLoading } = useGetPokemonByNameOrId(pokemonString);
+  const { data: allPokemon, isLoading: allPokemonIsLoading } =
+    useGetAllPokemonByNameOrId();
 
-  if (isLoading) <>isLoading</>;
+  if (allPokemonIsLoading) <>isLoading</>;
+
+  const pokemonIndex = 0;
+  const firstPokemon = allPokemon?.results[pokemonIndex];
 
   return (
     <div className="flex justify-center items-center h-screen p-4">
-      {data?.name}
+      {/* {allPokemon?.results.map((pokemon) => { */}
+      {
+        <div>
+          {firstPokemon?.name}
+          <img
+            src={`/sprites/${pokemonIndex + 1}.png`}
+            alt={firstPokemon?.name}
+          />
+        </div>
+      }
     </div>
   );
 };

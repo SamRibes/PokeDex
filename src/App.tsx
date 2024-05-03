@@ -1,27 +1,19 @@
 import React from 'react';
-import { useGetAllPokemonByNameOrId, useGetPokemonByNameOrId } from './api/api';
+import { useGetAllPokemon } from './api/api';
+import PokeCard from './components/PokeCard';
 
 const App = () => {
-  const { data: allPokemon, isLoading: allPokemonIsLoading } =
-    useGetAllPokemonByNameOrId();
-
-  if (allPokemonIsLoading) <>isLoading</>;
-
-  const pokemonIndex = 0;
-  const firstPokemon = allPokemon?.results[pokemonIndex];
+  const { data, isLoading } = useGetAllPokemon();
 
   return (
-    <div className="flex justify-center items-center h-screen p-4">
-      {/* {allPokemon?.results.map((pokemon) => { */}
-      {
-        <div>
-          {firstPokemon?.name}
-          <img
-            src={`/sprites/${pokemonIndex + 1}.png`}
-            alt={firstPokemon?.name}
-          />
-        </div>
-      }
+    <div className="h-screen p-4 bg-zinc-300">
+      {isLoading && <>...is loading...</>}
+      <div className="flex justify-left flex-wrap ">
+        {!isLoading &&
+          data?.results.map((pokemon, index) => (
+            <PokeCard key={index} pokemon={pokemon} index={index} />
+          ))}
+      </div>
     </div>
   );
 };

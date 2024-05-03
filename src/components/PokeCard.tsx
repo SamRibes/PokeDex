@@ -13,7 +13,7 @@ const PokeCard = (props: PokeCardProps) => {
   const { pokemon, index } = props;
   return (
     <Card className="m-5 h-40 w-40 flex flex-col items-center bg-zinc-200">
-      <CardHeader>{pokemon.name}</CardHeader>
+      <CardHeader className="space-y-0.5 pb-2">{pokemon.name}</CardHeader>
       <img src={`/sprites/${index + 1}.png`} alt={pokemon.name} />
     </Card>
   );

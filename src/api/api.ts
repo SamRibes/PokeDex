@@ -27,7 +27,7 @@ const getAllPokemon = async (): Promise<AllPokemon> => {
     });
 };
 
-export const useGetAllPokemonByNameOrId = () => {
+export const useGetAllPokemon = () => {
   return useQuery({
     queryKey: ['getPokemon'],
     queryFn: getAllPokemon,

@@ -18,3 +18,7 @@ export function setStorageIsDimmed(newValue: boolean) {
 export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function processDescription(description: string) {
+  return description.replace(/[\u0000-\u001F\u007F-\u009F]/g, ' ');
+}

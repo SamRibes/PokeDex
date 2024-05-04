@@ -1,4 +1,5 @@
 import React from 'react';
+import { capitalizeFirstLetter } from '../@/lib/utils';
 import { Card, CardHeader } from '../@/components/ui/card';
 import { usePokeContext } from './PokeContext';
 import { PokemonItem } from '../api/types';
@@ -20,7 +21,7 @@ const PokeCard = (props: PokeCardProps) => {
       <div className="flex flex-col items-center justify-between">
         <CardHeader className="space-y-0.5 py-1">{index + 1}</CardHeader>
         <CardHeader className="space-y-0.5 pb-1 pt-0">
-          {pokemon.name}
+          {capitalizeFirstLetter(pokemon.name)}
         </CardHeader>
       </div>
       <PokeImage index={index + 1} alt={pokemon.name} />

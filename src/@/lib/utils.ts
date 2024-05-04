@@ -14,3 +14,7 @@ export function getStorageIsDimmed(): boolean {
 export function setStorageIsDimmed(newValue: boolean) {
   localStorage.setItem('isDimmed', `${newValue}`);
 }
+
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

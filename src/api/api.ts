@@ -11,10 +11,15 @@ const getPokemonByNameOrId = async (nameOrId: string): Promise<Pokemon> => {
     });
 };
 
-export const useGetPokemonByNameOrId = (nameOrId: string) => {
+export const useGetPokemonByNameOrId = (nameOrId: string | null) => {
   return useQuery({
     queryKey: ['getPokemon', nameOrId],
-    queryFn: () => getPokemonByNameOrId(nameOrId),
+    queryFn: () => {
+      if (nameOrId) {
+        if (nameOrId?.length > 0) return getPokemonByNameOrId(nameOrId);
+      }
+      return null;
+    },
   });
 };
 

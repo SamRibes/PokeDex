@@ -6,9 +6,7 @@ import { PokeContext, PokeContextProps } from './components/PokeContext';
 
 const App = () => {
   const [isDimmed, setIsDimmed] = useState(getStorageIsDimmed());
-  const [selectedPokemon, setSelectedPokemon] = useState<string | undefined>(
-    undefined,
-  );
+  const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
 
   const pokeContextValue: PokeContextProps = {
     selectedPokemon,
@@ -16,7 +14,9 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div
+      className={`h-screen p-4 ${isDimmed ? 'bg-slate-800' : 'bg-zinc-300'} flex justify-center items-center`}
+    >
       <Switch
         checked={isDimmed}
         onCheckedChange={() => {
@@ -24,18 +24,14 @@ const App = () => {
           setIsDimmed(!isDimmed);
         }}
       />
-      <div
-        className={`h-screen p-4 ${isDimmed ? 'bg-slate-800' : 'bg-zinc-300'} flex justify-center items-center`}
-      >
-        <div className="h-[90%] w-[85%] p-10 rounded-l-lg border-2 border-black bg-red-400">
-          <PokeContext.Provider value={pokeContextValue}>
-            <div className="h-full w-full grid grid-cols-[1fr,1rem,1fr]">
-              <PokeList />
-              <div className="w-5" />
-              <PokeDetails />
-            </div>
-          </PokeContext.Provider>
-        </div>
+      <div className="h-[90%] w-[85%] p-10 rounded-l-lg border-2 border-black bg-red-400">
+        <PokeContext.Provider value={pokeContextValue}>
+          <div className="h-full w-full grid grid-cols-[1fr,1rem,1fr]">
+            <PokeList />
+            <div className="w-5" />
+            <PokeDetails />
+          </div>
+        </PokeContext.Provider>
       </div>
     </div>
   );

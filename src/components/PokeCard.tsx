@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardHeader } from '../@/components/ui/card';
 import { usePokeContext } from './PokeContext';
 import { PokemonItem } from '../api/types';
+import { PokeImage } from '.';
 
 interface PokeCardProps {
   pokemon: PokemonItem;
@@ -22,7 +23,7 @@ const PokeCard = (props: PokeCardProps) => {
           {pokemon.name}
         </CardHeader>
       </div>
-      <img src={`/sprites/${index + 1}.png`} alt={pokemon.name} />
+      <PokeImage index={index + 1} alt={pokemon.name} />
     </Card>
   );
 };

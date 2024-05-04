@@ -1,8 +1,8 @@
 import { Dispatch, createContext, useContext } from 'react';
 
 export interface PokeContextProps {
-  selectedPokemon?: string;
-  setSelectedPokemon: Dispatch<React.SetStateAction<string | undefined>>;
+  selectedPokemon: string | null;
+  setSelectedPokemon: Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const PokeContext = createContext<PokeContextProps | undefined>(

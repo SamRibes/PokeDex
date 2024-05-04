@@ -15,7 +15,7 @@ const PokeCard = (props: PokeCardProps) => {
   const { setSelectedPokemon } = usePokeContext();
   return (
     <Card
-      className="flex flex-col items-center m-5 h-40 w-36 select-none bg-zinc-200 cursor-pointer hover:bg-slate-500 active:bg-slate-600"
+      className="flex flex-col items-center m-5 size-[25%] select-none bg-zinc-200 cursor-pointer hover:bg-slate-500 active:bg-slate-600"
       onClick={() => setSelectedPokemon(pokemon.name)}
     >
       <div className="flex flex-col items-center justify-between">
@@ -24,7 +24,7 @@ const PokeCard = (props: PokeCardProps) => {
           {capitalizeFirstLetter(pokemon.name)}
         </CardHeader>
       </div>
-      <PokeImage index={index + 1} alt={pokemon.name} />
+      <PokeImage index={index + 1} alt={pokemon.name} className=" size-36" />
     </Card>
   );
 };

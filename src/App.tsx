@@ -6,7 +6,9 @@ import { PokeContext, PokeContextProps } from './components/PokeContext';
 
 const App = () => {
   const [isDimmed, setIsDimmed] = useState(getStorageIsDimmed());
-  const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<string | undefined>(
+    undefined,
+  );
 
   const pokeContextValue: PokeContextProps = {
     selectedPokemon,

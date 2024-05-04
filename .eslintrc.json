@@ -18,7 +18,8 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    "react/prop-types": [2, { "ignore": "className" }]
+    "react/prop-types": [2, { "ignore": "className" }],
+    "no-control-regex": 0
   },
   "settings": {
     "import/resolver": {

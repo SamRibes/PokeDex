@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useGetAllPokemon } from '../api/api';
-import { PokeCard, Spinner } from '.';
 import Fuse from 'fuse.js';
+import { useGetAllPokemon } from '../api/api';
+import { Input } from '../@/components/ui/input';
+import { PokeCard, Spinner } from '.';
 
 const PokeList = () => {
   const { data: pokeData, isLoading } = useGetAllPokemon();
@@ -27,9 +28,11 @@ const PokeList = () => {
 
       return (
         <>
-          <input
+          <Input
             value={searchString}
             onChange={(e) => setSearchString(e.target.value)}
+            className="w-[40%] text-2xl text-center"
+            placeholder="Search"
           />
           <div className="flex flex-wrap justify-evenly h-full overflow-auto mt-4">
             {!isLoading &&

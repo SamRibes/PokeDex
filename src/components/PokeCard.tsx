@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Card,
-  CardHeader,
-} from '../@/components/ui/card';
+import { Card, CardHeader } from '../@/components/ui/card';
+import { usePokeContext } from './PokeContext';
 
 interface PokeCardProps {
   pokemon: {
@@ -12,24 +10,21 @@ interface PokeCardProps {
   index: number;
 }
 
-const PokeCard = (
-  props: PokeCardProps,
-) => {
+const PokeCard = (props: PokeCardProps) => {
   const { pokemon, index } = props;
+  const { setSelectedPokemon } = usePokeContext();
   return (
-    <Card className="flex flex-col items-center m-5 h-40 w-36 select-none bg-zinc-200 cursor-pointer hover:bg-slate-500 active:bg-slate-600">
+    <Card
+      className="flex flex-col items-center m-5 h-40 w-36 select-none bg-zinc-200 cursor-pointer hover:bg-slate-500 active:bg-slate-600"
+      onClick={() => setSelectedPokemon(pokemon)}
+    >
       <div className="flex flex-col items-center justify-between">
-        <CardHeader className="space-y-0.5 py-1">
-          {index + 1}
-        </CardHeader>
+        <CardHeader className="space-y-0.5 py-1">{index + 1}</CardHeader>
         <CardHeader className="space-y-0.5 pb-1 pt-0">
           {pokemon.name}
         </CardHeader>
       </div>
-      <img
-        src={`/sprites/${index + 1}.png`}
-        alt={pokemon.name}
-      />
+      <img src={`/sprites/${index + 1}.png`} alt={pokemon.name} />
     </Card>
   );
 };

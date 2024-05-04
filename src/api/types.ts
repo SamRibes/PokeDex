@@ -2,10 +2,12 @@ export interface AllPokemon {
   count: number;
   next: string;
   previous: string;
-  results: {
-    name: string;
-    url: string;
-  }[];
+  results: PokemonItem[];
+}
+
+export interface PokemonItem {
+  name: string;
+  url: string;
 }
 
 export interface Pokemon {

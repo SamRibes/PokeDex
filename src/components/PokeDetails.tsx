@@ -60,7 +60,10 @@ const PokeDetails = () => {
               {pokemonDetails && (
                 <>
                   <TableHeader>
-                    <TableHead>Stat</TableHead>
+                    <TableRow>
+                      <TableHead>Stat</TableHead>
+                      <TableHead />
+                    </TableRow>
                   </TableHeader>
                   <TableBody>
                     {pokemonDetails &&

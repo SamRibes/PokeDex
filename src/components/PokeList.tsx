@@ -11,19 +11,19 @@ const PokeList = () => {
     if (pokeData && !isLoading) {
       const fuse = new Fuse(pokeData.results, {
         keys: ['name'],
+        threshold: 0.3,
       });
 
       const searchResult = fuse.search(searchString);
 
-      const correctlyShapedArray = pokeData.results.map((val, index) => ({
+      const allResults = pokeData.results.map((val, index) => ({
         item: Object.assign(val, {}),
         refIndex: index,
         matches: [],
         score: 1,
       }));
 
-      const dataToUse =
-        searchResult.length > 1 ? searchResult : correctlyShapedArray;
+      const dataToUse = searchString.length > 1 ? searchResult : allResults;
 
       return (
         <>
@@ -40,6 +40,7 @@ const PokeList = () => {
                   index={searchItem.refIndex}
                 />
               ))}
+            {dataToUse.length < 1 && <>There are no results</>}
           </div>
         </>
       );

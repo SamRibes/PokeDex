@@ -24,7 +24,7 @@ const PokeDetails = () => {
 
   let index = 0;
   let alt = 'No Pokemon Selected';
-  let name = "Welcome! Please select a Pokemon to view it's details";
+  let name = 'Welcome! Please select a Pokemon to view its details';
   let description = '';
 
   if (pokemonDetails) {

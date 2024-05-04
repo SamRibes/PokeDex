@@ -1,9 +1,8 @@
 import { Dispatch, createContext, useContext } from 'react';
-import { PokemonItem } from '../api/types';
 
 export interface PokeContextProps {
-  selectedPokemon?: PokemonItem;
-  setSelectedPokemon: Dispatch<React.SetStateAction<PokemonItem | undefined>>;
+  selectedPokemon?: string;
+  setSelectedPokemon: Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 export const PokeContext = createContext<PokeContextProps | undefined>(

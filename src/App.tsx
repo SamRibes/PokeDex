@@ -3,13 +3,12 @@ import { PokeDetails, PokeList } from './components';
 import { getStorageIsDimmed, setStorageIsDimmed } from './@/lib/utils';
 import { Switch } from './@/components/ui/switch';
 import { PokeContext, PokeContextProps } from './components/PokeContext';
-import { PokemonItem } from './api/types';
 
 const App = () => {
   const [isDimmed, setIsDimmed] = useState(getStorageIsDimmed());
-  const [selectedPokemon, setSelectedPokemon] = useState<
-    PokemonItem | undefined
-  >(undefined);
+  const [selectedPokemon, setSelectedPokemon] = useState<string | undefined>(
+    undefined,
+  );
 
   const pokeContextValue: PokeContextProps = {
     selectedPokemon,

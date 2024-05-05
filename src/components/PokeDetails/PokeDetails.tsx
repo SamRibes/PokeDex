@@ -69,6 +69,7 @@ const PokeDetails = () => {
             <Button
               variant="ghost"
               size="icon"
+              disabled={index === 1}
               onClick={() => navigatePokemon('previous')}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -111,6 +112,7 @@ const PokeDetails = () => {
             <Button
               variant="ghost"
               size="icon"
+              disabled={index === 151}
               onClick={() => navigatePokemon('next')}
             >
               <ChevronRight className="h-4 w-4" />

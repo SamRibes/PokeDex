@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 import nock from 'nock';
 import mockedSpeciesAPIResponse from './mockData/mockedSpeciesAPIResponse.json';
 import mockedPokemonAPIResponse from './mockData/mockedPokemonAPIResponse.json';
 import mockedAllPokemonAPIResponse from './mockData/mockedAllPokemonAPIResponse.json';
+import {
+  PokeContext,
+  PokeContextProps,
+} from './components/PokeContext/PokeContext';
 
 export const baseUrl = 'https://pokeapi.co/api/v2/';
 
@@ -16,10 +20,18 @@ export const AllTheProviders = ({
   initialEntries: string;
 }) => {
   const queryClient = new QueryClient();
-
+  const [isDimmed, setIsDimmed] = useState(false);
+  const contextValue: PokeContextProps = {
+    isDimmed,
+    setIsDimmed,
+  };
   return (
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter initialEntries={[initialEntries]}>{children}</MemoryRouter>
+      <PokeContext.Provider value={contextValue}>
+        <MemoryRouter initialEntries={[initialEntries]}>
+          {children}
+        </MemoryRouter>
+      </PokeContext.Provider>
     </QueryClientProvider>
   );
 };

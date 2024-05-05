@@ -71,6 +71,7 @@ const PokeDetails = () => {
               size="icon"
               disabled={index === 1}
               onClick={() => navigatePokemon('previous')}
+              className={index === 0 ? 'invisible' : ''}
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -114,6 +115,7 @@ const PokeDetails = () => {
               size="icon"
               disabled={index === 151}
               onClick={() => navigatePokemon('next')}
+              className={index === 0 ? 'invisible' : ''}
             >
               <ChevronRight className="h-4 w-4" />
             </Button>

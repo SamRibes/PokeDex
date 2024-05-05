@@ -13,6 +13,14 @@
   font-style: normal;
 }
 
+@layer utilities {
+  .center-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -3,6 +3,8 @@ import { Dispatch, createContext, useContext } from 'react';
 export interface PokeContextProps {
   selectedPokemon?: string;
   setSelectedPokemon: Dispatch<React.SetStateAction<string | undefined>>;
+  isDimmed: boolean;
+  setIsDimmed: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const PokeContext = createContext<PokeContextProps | undefined>(

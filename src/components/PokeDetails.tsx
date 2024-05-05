@@ -46,7 +46,7 @@ const PokeDetails = () => {
   return (
     // TODO- Long term I'd have breakpoints for smaller screen sizes (change images sizes and reformat the PokeDetails)
     <div className="p-5 border-2 border-black bg-black overflow-scroll">
-      <div className="p-5 flex justify-center items-center flex-wrap bg-slate-300 h-full">
+      <div className="p-5 center-element flex-wrap bg-slate-300 h-full">
         {(isDetailsLoading || isSpeciesLoading) && <Spinner />}
         {!isDetailsLoading && !isSpeciesLoading && (
           <div className="flex flex-col justify-center items-center">

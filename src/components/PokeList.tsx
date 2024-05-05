@@ -3,8 +3,12 @@ import Fuse from 'fuse.js';
 import { useGetAllPokemon } from '../api/api';
 import { Input } from '../@/components/ui/input';
 import { PokeCard, Spinner } from '.';
+import { Switch } from '../@/components/ui/switch';
+import { usePokeContext } from './PokeContext';
+import { setStorageIsDimmed } from '../@/lib/utils';
 
 const PokeList = () => {
+  const { isDimmed, setIsDimmed } = usePokeContext();
   const { data: pokeData, isLoading } = useGetAllPokemon();
   const [searchString, setSearchString] = useState('');
 
@@ -28,12 +32,25 @@ const PokeList = () => {
 
       return (
         <>
-          <Input
-            value={searchString}
-            onChange={(e) => setSearchString(e.target.value)}
-            className="w-[40%] text-2xl text-center"
-            placeholder="Search"
-          />
+          <div className="flex justify-between items-center w-full">
+            <div className="w-40"></div>
+            <Input
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
+              className="w-[40%] text-2xl text-center"
+              placeholder="Search"
+            />
+            <div className="center-element w-40">
+              <label className="mr-1">Dim the lights</label>
+              <Switch
+                checked={isDimmed}
+                onCheckedChange={() => {
+                  setStorageIsDimmed(!isDimmed);
+                  setIsDimmed(!isDimmed);
+                }}
+              />
+            </div>
+          </div>
           <div className="flex flex-wrap justify-evenly h-full overflow-auto mt-4">
             {!isLoading &&
               dataToUse.map((searchItem, index) => (

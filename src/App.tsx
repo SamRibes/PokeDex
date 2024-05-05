@@ -13,19 +13,14 @@ const App = () => {
   const pokeContextValue: PokeContextProps = {
     selectedPokemon,
     setSelectedPokemon,
+    isDimmed,
+    setIsDimmed,
   };
 
   return (
     <div
-      className={`h-screen p-4 ${isDimmed ? 'bg-slate-800' : 'bg-zinc-300'} flex justify-center items-center`}
+      className={`h-screen p-4 ${isDimmed ? 'bg-slate-800' : 'bg-zinc-300'} center-element`}
     >
-      <Switch
-        checked={isDimmed}
-        onCheckedChange={() => {
-          setStorageIsDimmed(!isDimmed);
-          setIsDimmed(!isDimmed);
-        }}
-      />
       <div className="h-[90%] w-[85%] p-10 rounded-l-lg border-2 border-black bg-red-400">
         <PokeContext.Provider value={pokeContextValue}>
           <div className="h-full w-full grid grid-cols-[1fr,1rem,1fr]">

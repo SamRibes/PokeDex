@@ -22,7 +22,7 @@ export const useGetPokemonByNameOrId = (nameOrId?: string) => {
 const getPokemonSpeciesByNameOrId = async (
   nameOrId?: string,
 ): Promise<PokemonSpecies> => {
-  return await fetch(`${baseUrl}/pokemon-species/${nameOrId}`)
+  return await fetch(`${baseUrl}pokemon-species/${nameOrId}`)
     .then((response) => response.json())
     .catch((error) => {
       console.error(error);

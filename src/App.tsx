@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PokeDetails, PokeList } from './components';
-import { getStorageIsDimmed, setStorageIsDimmed } from './@/lib/utils';
-import { Switch } from './@/components/ui/switch';
+import { getStorageIsDimmed } from './@/lib/utils';
 import { PokeContext, PokeContextProps } from './components/PokeContext';
 
 const App = () => {

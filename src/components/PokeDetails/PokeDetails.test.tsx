@@ -1,10 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { AllTheProviders } from '../../test-utils';
+import PokeDetails from './PokeDetails';
 
-// we'll put some stuff in here later
+test('Renders the PokeDetails Component correctly', async () => {
+  render(
+    <AllTheProviders initialEntries="?pokeId=1">
+      <PokeDetails />
+    </AllTheProviders>,
+  );
 
-test('Renders the Error Page', () => {
-  // render(<PokeCard pokemon={} index={} />);
-  // const linkElement = screen.getByText(/Error Page/i);
-  // expect(linkElement).toBeInTheDocument();
+  await new Promise((r) => setTimeout(r, 500));
+  const linkElement = await screen.getByText(/Bulbasaur/i);
+  expect(linkElement).toBeInTheDocument();
 });

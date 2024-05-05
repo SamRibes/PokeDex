@@ -1,17 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { AllTheProviders } from '../../test-utils';
+import nock from 'nock';
+import { AllTheProviders, interceptAPICalls } from '../../test-utils';
 import PokeDetails from './PokeDetails';
 
 test('Renders the PokeDetails Component correctly', async () => {
-  const { container } = render(
+  render(
     <AllTheProviders initialEntries="?pokeId=1">
       <PokeDetails />
     </AllTheProviders>,
   );
 
   await new Promise((r) => setTimeout(r, 500));
-
+  interceptAPICalls();
   const pokemonName = screen.getByText(/Bulbasaur/i);
   expect(pokemonName).toBeInTheDocument();
 
@@ -49,4 +50,6 @@ test('Renders the PokeDetails Component correctly', async () => {
   expect(speed).toBeInTheDocument();
   const speedValue = await screen.getByText(/45/i);
   expect(speedValue).toBeInTheDocument();
+
+  nock.cleanAll();
 });

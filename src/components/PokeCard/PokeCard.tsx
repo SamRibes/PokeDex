@@ -1,8 +1,8 @@
 import React from 'react';
-import { capitalizeFirstLetter } from '../@/lib/utils';
-import { Card, CardHeader } from '../@/components/ui/card';
-import { PokemonItem } from '../api/types';
-import { PokeImage } from '.';
+import { capitalizeFirstLetter } from '../../@/lib/utils';
+import { Card, CardHeader } from '../../@/components/ui/card';
+import { PokemonItem } from '../../api/types';
+import { PokeImage } from '..';
 import { useSearchParams } from 'react-router-dom';
 
 interface PokeCardProps {

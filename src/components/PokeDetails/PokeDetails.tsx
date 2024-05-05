@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import {
   useGetPokemonByNameOrId,
   useGetPokemonSpeciesByNameOrId,
-} from '../api/api';
-import { PokeImage, Spinner } from '.';
+} from '../../api/api';
+import { PokeImage, Spinner } from '..';
 import {
   Table,
   TableBody,
@@ -12,9 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../@/components/ui/table';
-import { capitalizeFirstLetter, processDescription } from '../@/lib/utils';
-import { Button } from '../@/components/ui/button';
+} from '../../@/components/ui/table';
+import { capitalizeFirstLetter, processDescription } from '../../@/lib/utils';
+import { Button } from '../../@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PokeDetails = () => {

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorPage } from './components';
 import App from './App';
 import './globals.css';
+
 const router = createBrowserRouter([
   {
     path: '/',

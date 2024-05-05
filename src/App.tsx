@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { PokeDetails, PokeList } from './components';
 import { getStorageIsDimmed } from './@/lib/utils';
-import { PokeContext, PokeContextProps } from './components/PokeContext';
+import {
+  PokeContext,
+  PokeContextProps,
+} from './components/PokeContext/PokeContext';
 
 const App = () => {
   const [isDimmed, setIsDimmed] = useState(getStorageIsDimmed());

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Fuse from 'fuse.js';
-import { useGetAllPokemon } from '../api/api';
-import { Input } from '../@/components/ui/input';
-import { PokeCard, Spinner } from '.';
-import { Switch } from '../@/components/ui/switch';
-import { usePokeContext } from './PokeContext';
-import { setStorageIsDimmed } from '../@/lib/utils';
+import { useGetAllPokemon } from '../../api/api';
+import { Input } from '../../@/components/ui/input';
+import { PokeCard, Spinner } from '..';
+import { Switch } from '../../@/components/ui/switch';
+import { usePokeContext } from '../PokeContext/PokeContext';
+import { setStorageIsDimmed } from '../../@/lib/utils';
 
 const PokeList = () => {
   const { isDimmed, setIsDimmed } = usePokeContext();

@@ -1,9 +1,9 @@
 import React from 'react';
 import { capitalizeFirstLetter } from '../@/lib/utils';
 import { Card, CardHeader } from '../@/components/ui/card';
-import { usePokeContext } from './PokeContext';
 import { PokemonItem } from '../api/types';
 import { PokeImage } from '.';
+import { useSearchParams } from 'react-router-dom';
 
 interface PokeCardProps {
   pokemon: PokemonItem;
@@ -12,19 +12,26 @@ interface PokeCardProps {
 
 const PokeCard = (props: PokeCardProps) => {
   const { pokemon, index } = props;
-  const { setSelectedPokemon } = usePokeContext();
+  const [params, setParams] = useSearchParams();
+  const newQueryParameters = new URLSearchParams();
+
+  const getIndex = () => index + 1;
+
   return (
     <Card
       className="flex flex-col items-center m-5 size-[250px] select-none bg-zinc-200 cursor-pointer hover:bg-slate-500 active:bg-slate-600"
-      onClick={() => setSelectedPokemon(pokemon.name)}
+      onClick={() => {
+        newQueryParameters.set('pokeId', getIndex().toString());
+        setParams(newQueryParameters);
+      }}
     >
       <div className="flex flex-col items-center justify-between">
-        <CardHeader className="space-y-0.5 py-1">{index + 1}</CardHeader>
+        <CardHeader className="space-y-0.5 py-1">{getIndex()}</CardHeader>
         <CardHeader className="space-y-0.5 pb-1 pt-0">
           {capitalizeFirstLetter(pokemon.name)}
         </CardHeader>
       </div>
-      <PokeImage index={index + 1} alt={pokemon.name} className=" size-36" />
+      <PokeImage index={getIndex()} alt={pokemon.name} className=" size-36" />
     </Card>
   );
 };

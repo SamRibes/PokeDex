@@ -1,10 +1,10 @@
 import React from 'react';
-import { PokeImage, Spinner } from '.';
-import { usePokeContext } from './PokeContext';
+import { useSearchParams } from 'react-router-dom';
 import {
   useGetPokemonByNameOrId,
   useGetPokemonSpeciesByNameOrId,
 } from '../api/api';
+import { PokeImage, Spinner } from '.';
 import {
   Table,
   TableBody,
@@ -16,11 +16,14 @@ import {
 import { capitalizeFirstLetter, processDescription } from '../@/lib/utils';
 
 const PokeDetails = () => {
-  const { selectedPokemon } = usePokeContext();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const param = searchParams.get('pokeId');
+  const pokeId = param ? param : undefined;
+
   const { data: pokemonDetails, isLoading: isDetailsLoading } =
-    useGetPokemonByNameOrId(selectedPokemon);
+    useGetPokemonByNameOrId(pokeId);
   const { data: pokemonSpecies, isLoading: isSpeciesLoading } =
-    useGetPokemonSpeciesByNameOrId(selectedPokemon);
+    useGetPokemonSpeciesByNameOrId(pokeId);
 
   let index = 0;
   let alt = 'No Pokemon Selected';

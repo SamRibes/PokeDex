@@ -62,19 +62,19 @@ const PokeDetails = () => {
   return (
     // TODO- Long term I'd have breakpoints for smaller screen sizes (change images sizes and reformat the PokeDetails)
     <div className="p-5 border-2 border-black bg-black overflow-scroll">
-      <div className="flex items-center justify-around p-5 bg-slate-300 h-full">
+      <div className="flex items-center justify-between p-5 bg-slate-300 h-full">
+        <Button
+          variant="ghost"
+          size="icon"
+          disabled={index === 1}
+          onClick={() => navigatePokemon('previous')}
+          className={index === 0 ? 'invisible' : ''}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
         {(isDetailsLoading || isSpeciesLoading) && <Spinner />}
         {!isDetailsLoading && !isSpeciesLoading && (
           <>
-            <Button
-              variant="ghost"
-              size="icon"
-              disabled={index === 1}
-              onClick={() => navigatePokemon('previous')}
-              className={index === 0 ? 'invisible' : ''}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
             <div className="flex flex-col justify-center items-center">
               <PokeImage className="h-80 w-80" index={index} alt={alt} />
               <div className="flex flex-col items-center">
@@ -110,17 +110,17 @@ const PokeDetails = () => {
                 )}
               </Table>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              disabled={index === 151}
-              onClick={() => navigatePokemon('next')}
-              className={index === 0 ? 'invisible' : ''}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
           </>
         )}
+        <Button
+          variant="ghost"
+          size="icon"
+          disabled={index === 151}
+          onClick={() => navigatePokemon('next')}
+          className={index === 0 ? 'invisible' : ''}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </Button>
       </div>
     </div>
   );
